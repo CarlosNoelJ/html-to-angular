@@ -9,15 +9,26 @@ export class InfopagesService {
 
   info: InfoPage = {};
   cargada = false;
+  team: any[] = [];
 
   constructor( private http: HttpClient) {
+  this.uploadInfo();
+  this.uploadTeam();
+  }
 
-  // Read JSON file
-  this.http.get('assets/data/data-page.json')
-      .subscribe( (resp: InfoPage) => {
-        this.cargada = true;
-        this.info = resp;
-        // console.log(resp);
+  private uploadInfo() {
+    this.http.get('assets/data/data-page.json')
+    .subscribe( (resp: InfoPage) => {
+      this.cargada = true;
+      this.info = resp;
+    });
+  }
+
+  private uploadTeam() {
+    this.http.get('https://angular-html-891f0.firebaseio.com/team.json')
+      .subscribe( (resp: any[]) => {
+        this.team = resp;
+        console.log(resp);
       });
   }
 }
