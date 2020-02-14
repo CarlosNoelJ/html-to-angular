@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { InfopagesService } from './services/infopages.service';
+import { ProductsService } from './services/products.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import { InfopagesService } from './services/infopages.service';
 })
 export class AppComponent {
 
-  constructor( public infopageservice: InfopagesService ) {
+  constructor( public infopageservice: InfopagesService,
+               public products: ProductsService ) {
 
   }
 }
